@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.megaulorder.spaghet.view.TouchaLinearLayout
+	android:id="@+id/background"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="horizontal"
+	android:background="?attr/colorPrimary"
+	android:gravity="center"
+	>
+
+	<com.megaulorder.spaghet.view.TouchaImageView
+		android:id="@+id/spaghet"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/spaghet"
+		/>
+
+	<FrameLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		>
+
+		<com.megaulorder.spaghet.view.TouchaImageView
+			android:id="@+id/bubble"
+			android:layout_width="230dp"
+			android:layout_height="230dp"
+			android:src="@drawable/bubble"
+			/>
+
+		<TextView
+			android:id="@+id/text"
+			android:layout_width="135dp"
+			android:layout_marginStart="45dp"
+			android:layout_marginTop="50dp"
+			android:gravity="center"
+			android:textSize="20sp"
+			android:layout_height="wrap_content"
+			android:text="@string/nothing"
+			/>
+	</FrameLayout>
+
+
+	<com.megaulorder.spaghet.view.TouchaImageView
+		android:id="@+id/head"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/head"
+		/>
+
+</com.megaulorder.spaghet.view.TouchaLinearLayout>

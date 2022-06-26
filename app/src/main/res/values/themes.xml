@@ -1,0 +1,27 @@
+<resources>
+	<!-- Base application theme. -->
+	<style name="Theme.Spaghet" parent="Theme.MaterialComponents.Light.DarkActionBar">
+		<!-- Primary brand color. -->
+		<item name="colorPrimary">@color/yellow</item>
+		<item name="colorPrimaryVariant">@color/yellow_dark</item>
+		<item name="android:textColor">@color/black</item>
+		<!-- Secondary brand color. -->
+		<item name="colorSecondary">@color/green</item>
+		<item name="colorSecondaryVariant">@color/green_light</item>
+		<item name="colorOnSecondary">@color/brown_dark</item>
+
+		<item name="android:fontFamily">@font/indieflower</item>
+		<item name="fontFamily">@font/indieflower</item>
+
+		<item name="actionBarStyle">@style/ActionBar</item>
+		<!-- Status bar color. -->
+		<item name="android:statusBarColor">@color/brown</item>
+		<!-- Customize your theme here. -->
+		<item name="actionBarTheme">@style/ActionBar</item>
+	</style>
+
+	<style name="ActionBar" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+		<item name="background">@color/brown_light</item>
+		<item name="displayOptions">showHome|useLogo|showTitle</item>
+	</style>
+</resources>

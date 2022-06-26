@@ -1,0 +1,5 @@
+<resources>
+	<string name="app_name">spaghet</string>
+	<string name="nothing">. . .</string>
+	<string name="somebody_toucha_my_spaghet">Somebody %sa my %s!!!</string>
+</resources>
