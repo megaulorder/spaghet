@@ -13,8 +13,12 @@ class TouchaImageView(context: Context, attrs: AttributeSet?) : AppCompatImageVi
 
 	override var detector: GestureDetectorCompat? = null
 
+	override var onTouchCallback: ((name: String?) -> Unit)? = null
+
 	override fun onTouchEvent(event: MotionEvent): Boolean {
+		super.onTouchEvent(event)
 		detector?.onTouchEvent(event)
+		onTouchCallback?.invoke(name)
 		return true
 	}
 }

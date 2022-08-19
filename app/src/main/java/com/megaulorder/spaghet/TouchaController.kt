@@ -1,7 +1,7 @@
 package com.megaulorder.spaghet
 
+import android.content.Context
 import android.util.Log
-import android.view.GestureDetector
 import androidx.core.view.GestureDetectorCompat
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.megaulorder.spaghet.mvi.Event
@@ -9,25 +9,27 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collect
 
 class TouchaController(
-	private val widget: TouchaWidget,
+	private val widgets: List<TouchaWidget>,
 	private val coroutineScope: LifecycleCoroutineScope,
-	private val eventsFlow: MutableSharedFlow<Event>
+	private val eventsFlow: MutableSharedFlow<Event>,
+	private val listener: TouchaOnGestureListener,
+	private val context: Context,
 ) {
 
-	private val detector = TouchaGestureDetector()
+	private var name: String? = null
 
 	init {
-		widget.setViewDetector(
-			GestureDetectorCompat(
-				widget.context,
-				detector as GestureDetector.SimpleOnGestureListener
-			)
-		)
+		widgets.forEach { widget ->
+			widget.setViewDetector(GestureDetectorCompat(context, listener))
+			widget.onTouchCallback = { name = it }
+		}
 
 		coroutineScope.launchWhenResumed {
-			detector.gesture.collect {
-				eventsFlow.emit(Event.Touch(widget.name, it))
+			listener.gesture.collect {
+				eventsFlow.emit(Event.Touch(TouchaObject.getByTitle(name), it.keys.last()))
+//				Log.d("zhopa", "Toucha Controller высрал $name ${it.keys.last()}")
 			}
 		}
 	}
 }
+

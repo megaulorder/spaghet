@@ -4,26 +4,28 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class TouchaGestureDetector : GestureDetector.SimpleOnGestureListener() {
+class TouchaOnGestureListener : GestureDetector.SimpleOnGestureListener() {
 
-	var gesture: MutableStateFlow<Gestures?> = MutableStateFlow(value = null)
+	private var touchCount: Long = 0
+
+	var gesture: MutableStateFlow<Map<Gesture?, Long?>> = MutableStateFlow(mapOf(null to null))
+		private set
 
 	override fun onDown(event: MotionEvent?): Boolean {
 		return true
 	}
 
 	override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
-		gesture.value = Gestures.SINGLE_TAP
-
+		gesture.value = mapOf(Gesture.SINGLE_TAP to ++touchCount)
 		return true
 	}
 
 	override fun onLongPress(event: MotionEvent?) {
-		gesture.value = Gestures.LONG_TAP
+		gesture.value = mapOf(Gesture.LONG_TAP to ++touchCount)
 	}
 
 	override fun onDoubleTap(e: MotionEvent?): Boolean {
-		gesture.value = Gestures.DOUBLE_TAP
+		gesture.value = mapOf(Gesture.DOUBLE_TAP to ++touchCount)
 		return true
 	}
 
@@ -33,7 +35,7 @@ class TouchaGestureDetector : GestureDetector.SimpleOnGestureListener() {
 		distanceX: Float,
 		distanceY: Float
 	): Boolean {
-		gesture.value = Gestures.SCROLL
+		gesture.value = mapOf(Gesture.SCROLL to ++touchCount)
 		return true
 	}
 
@@ -43,7 +45,7 @@ class TouchaGestureDetector : GestureDetector.SimpleOnGestureListener() {
 		velocityX: Float,
 		velocityY: Float
 	): Boolean {
-		gesture.value = Gestures.FLING
+		gesture.value = mapOf(Gesture.FLING to ++touchCount)
 		return true
 	}
 }

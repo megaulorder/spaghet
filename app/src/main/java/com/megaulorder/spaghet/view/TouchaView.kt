@@ -7,4 +7,6 @@ interface TouchaView {
 	var name: String?
 
 	var detector: GestureDetectorCompat?
+
+	var onTouchCallback: ((name: String?) -> Unit)?
 }

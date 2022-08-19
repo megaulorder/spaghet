@@ -37,6 +37,7 @@
 			android:textSize="20sp"
 			android:layout_height="wrap_content"
 			android:text="@string/nothing"
+			android:clickable="false"
 			/>
 	</FrameLayout>
 
